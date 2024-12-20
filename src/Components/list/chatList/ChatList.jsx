@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./chatList.css";
 
 function ChatList() {
+  const [addMode, setAddMode] = useState(false);
   return (
     <div>
       <div className="chatList">
@@ -10,7 +11,76 @@ function ChatList() {
             <img src="/search.png" alt="" />
             <input type="text" name="" id="" placeholder="Search" />
           </div>
-          <img src="/plus.png" alt="" />
+          <div className="add">
+            <img
+              src={addMode ? "/minus.png" : "/plus.png"}
+              alt=""
+              onClick={() => setAddMode((prev) => !prev)}
+            />
+          </div>
+        </div>
+        <div className="item">
+          <img src="/avatar.png" alt="" />
+          <div className="texts">
+            <span>Jane Deo</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div className="item">
+          <img src="/avatar.png" alt="" />
+          <div className="texts">
+            <span>Jane Deo</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div className="item">
+          <img src="/avatar.png" alt="" />
+          <div className="texts">
+            <span>Jane Deo</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div className="item">
+          <img src="/avatar.png" alt="" />
+          <div className="texts">
+            <span>Jane Deo</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div className="item">
+          <img src="/avatar.png" alt="" />
+          <div className="texts">
+            <span>Jane Deo</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div className="item">
+          <img src="/avatar.png" alt="" />
+          <div className="texts">
+            <span>Jane Deo</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div className="item">
+          <img src="/avatar.png" alt="" />
+          <div className="texts">
+            <span>Jane Deo</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div className="item">
+          <img src="/avatar.png" alt="" />
+          <div className="texts">
+            <span>Jane Deo</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div className="item">
+          <img src="/avatar.png" alt="" />
+          <div className="texts">
+            <span>Jane Deo</span>
+            <p>Hello</p>
+          </div>
         </div>
       </div>
     </div>
