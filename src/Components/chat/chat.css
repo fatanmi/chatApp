@@ -1,3 +1,107 @@
-.chat{
-    flex: 2;
+.chat {
+  flex: 2;
+  border-left: 2px solid #dddddd35;
+  border-right: 2px solid #dddddd35;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  .top {
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #dddddd35;
+    .icon {
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+      img {
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+      }
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      img {
+        width: 5rem;
+        height: 5rem;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+      .texts {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        span {
+          font-size: 1rem;
+          font-weight: Bold;
+        }
+        p {
+          font-size: 0.7rem;
+          font-weight: 50;
+          color: rgba#33313162;
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+  .center {
+    padding: 20px;
+    margin-top: auto;
+    flex: 1;
+  }
+  .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 0.4rem;
+    border-right: 2px solid #dddddd35;
+    border-top: 1px solid #dddddd35;
+    margin-top: auto;
+    .icon {
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+    }
+    img {
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+      object-fit: cover;
+    }
+    input {
+      border: none;
+      outline: none;
+      background-color: rgba(236, 236, 236, 0.425);
+      color: white;
+      padding: 0.7rem;
+      flex: 1;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+    }
+    .sendButton {
+      background-color: #5183fe;
+      color: white;
+      padding: 0.7rem;
+      border-radius: 0.6rem;
+      outline: none;
+      border: none;
+      cursor: pointer;
+    }
+    .emoji {
+      position: relative;
+      .picker {
+        position: absolute;
+        bottom: 2rem;
+        /* left: 0; */
+      }
+    }
+  }
 }

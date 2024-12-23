@@ -1,29 +1,29 @@
-.userInfo{
-    display: flex;
-    padding: 0.5rem;
-    align-items: center;
-    justify-content: space-between;
+.userInfo {
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
 
-    .user{
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-    
-        img{
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    img {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      object-fit: cover;
     }
-    .icon{
-        display: flex;
-        gap: 2rem;
-        justify-content: space-between;
-        img{
-            width: 2rem;
-            height: 2rem;
-            cursor: pointer;
-        }
+  }
+  .icon {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    img {
+      width: 2rem;
+      height: 2rem;
+      cursor: pointer;
     }
+  }
 }

@@ -6,7 +6,7 @@ function UserInfo() {
     <div className="userInfo">
       <div className="user">
         <img src="/avatar.png" alt="" />
-        <h2>Naomi Fat</h2>
+        <h4>Naomi Fat</h4>
       </div>
       <div className="icon">
         <img src="/more.png" alt="" />
