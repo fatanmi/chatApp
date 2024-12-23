@@ -26,9 +26,8 @@ function Details() {
           </div>
         </div>
       </div>
-
       <div className="info">
-        <div className="option">
+        <div className="option Sharedphotos">
           <div className="title">
             <span>Shared photos</span>
             <img src="/arrowDown.png" alt="" />
@@ -74,6 +73,7 @@ function Details() {
         </div>
       </div>
       <button>Block user</button>
+      <button className="logout">Logout</button>
     </div>
   );
 }
