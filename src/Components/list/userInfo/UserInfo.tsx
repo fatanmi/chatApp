@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import "./userInfo.css";
 
-function UserInfo() {
+function UserInfo(): ReactElement {
   return (
     <div className="userInfo">
       <div className="user">

@@ -1,20 +1,19 @@
 import "./chat.css";
-import React, { useEffect, useRef, useState } from "react";
-import EmojiPicker from "emoji-picker-react";
+import React, { ReactElement, useEffect, useRef, useState } from "react";
+import EmojiPicker, { EmojiClickData } from "emoji-picker-react";
 
-export default function Chat() {
+function Chat(): ReactElement {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
 
-  const handleEmoji = (e) => {
-    setText((prev) => prev + e.emoji);
+  const handleEmoji = (emojiData: EmojiClickData) => {
+    setText((prev) => prev + emojiData.emoji);
     setOpen(false);
   };
-  const endRef = useRef(null);
+  const endRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
-  console.log(text);
 
   return (
     <div className="chat">
@@ -93,30 +92,34 @@ export default function Chat() {
         <div ref={endRef}></div>
       </div>
       <div className="bottom">
-        <div className="icon">
+        <div className="flex gap-4 justify-between">
           <img src="/img.png" alt="" />
           <img src="/camera.png" alt="" />
           <img src="/mic.png" alt="" />
         </div>
         <input
-          type="text"
+          className="border-0 outline-none text-black text-wrap text-base bg-white p-3 rounded-[0.5rem] flex-1"
+          type=""
           value={text}
           placeholder="Type a message..."
           onChange={(e) => setText(e.target.value)}
         />
         <div className="text"></div>
-        <div className="emoji">
+        <div className="relative">
           <img
             src="/emoji.png"
             alt=""
             onClick={() => setOpen((prev) => !prev)}
           />
-          <div className="picker">
+          <div className="absolute bottom-8">
             <EmojiPicker open={open} onEmojiClick={handleEmoji} />
           </div>
         </div>
-        <button className="sendButton">Send</button>
+        <button className="bg-[#5183fe] text-white p-[0.7rem] rounded-[0.6rem] outline-none focus:outline-none border-0 cursor-pointer">
+          Send
+        </button>
       </div>
     </div>
   );
 }
+export default Chat;
