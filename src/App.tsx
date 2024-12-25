@@ -1,12 +1,12 @@
 import React, { ReactElement } from "react";
-import Detail from "./Components/detail/Detail";
-import List from "./Components/list/List";
-import Chat from "./Components/chat/Chat";
-import Login from "./Components/detail/login/Login";
-import Notification from "./Components/detail/notification/Notification";
+import Detail from "./components/detail/Detail";
+import List from "./components/list/List";
+import Chat from "./components/chat/Chat";
+import Login from "./components/detail/login/Login";
+import Notification from "./components/detail/notification/Notification";
 
 function App(): ReactElement {
-  const user: boolean = true;
+  const user: boolean = false;
   return (
     <div className="container">
       {user ? (

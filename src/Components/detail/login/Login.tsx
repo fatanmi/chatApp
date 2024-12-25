@@ -1,11 +1,8 @@
-import React,{
-  FormEvent,
-  ChangeEvent,
-  ReactElement,
-  useState,
-} from "react";
+import React, { FormEvent, ChangeEvent, ReactElement, useState } from "react";
 import "./login.css";
 import { toast } from "react-toastify";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../lib/firebase";
 
 function Login(): ReactElement {
   interface AvatarState {
@@ -25,9 +22,38 @@ function Login(): ReactElement {
   };
   const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Login successful")
-    
+    toast.success("Login successful");
+  };
+  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const { username, email, password } = Object.fromEntries(formData);
 
+    const registerUser = async (
+      email: string,
+      password: string
+    ): Promise<void> => {
+      try {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+        const user = userCredential.user;
+        
+        toast.success("User created successfully!");
+       } catch (error) {
+        if (error instanceof Error) {
+          console.error("Firebase Auth Error:", error, error.message);
+          toast.error(`Error: ${error.message}`);
+        } else {
+          console.error("Unknown Error:", error);
+          toast.error("An unexpected error occurred.");
+        }
+      }
+    };
+    registerUser(email.toString(), password.toString());
   };
   return (
     <div className="flex items-center justify-center w-full h-screen gap-10 bg-gradient-to-r from-purple-500 to-blue-500 p-4">
@@ -74,7 +100,10 @@ function Login(): ReactElement {
         <h2 className="text-2xl font-semibold text-white mb-4">
           Create an Account
         </h2>
-        <form className="flex flex-col w-full items-center gap-4">
+        <form
+          className="flex flex-col w-full items-center gap-4"
+          onSubmit={handleRegister}
+        >
           {/* Upload Image */}
           <label
             htmlFor="file2"
@@ -91,6 +120,7 @@ function Login(): ReactElement {
 
           {/* Username */}
           <input
+            name="username"
             className="w-full p-2 bg-white/30 text-white text-xl rounded-md
                        outline-none border-none focus:ring-2 focus:ring-white placeholder-white/70"
             type="text"
@@ -98,6 +128,7 @@ function Login(): ReactElement {
           />
           {/* Email */}
           <input
+            name="email"
             className="w-full p-2 bg-white/30 text-white text-xl rounded-md
                        outline-none border-none focus:ring-2 focus:ring-white placeholder-white/70"
             type="text"
@@ -105,6 +136,7 @@ function Login(): ReactElement {
           />
           {/* Password */}
           <input
+            name="password"
             className="w-full p-2 bg-white/30 text-white text-xl rounded-md
                        outline-none border-none focus:ring-2 focus:ring-white placeholder-white/60"
             type="password"
