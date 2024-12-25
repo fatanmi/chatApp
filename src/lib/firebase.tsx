@@ -14,6 +14,7 @@ const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
   authDomain: "chatapp-3c483.firebaseapp.com",
   projectId: "chatapp-3c483",
+  // storageBucket: "chatapp-3c483.firebasestorage.app",
   storageBucket: "chatapp-3c483.appspot.app",
   messagingSenderId: "339476416005",
   appId: "1:339476416005:web:3a79a0df2a684613623e6c",

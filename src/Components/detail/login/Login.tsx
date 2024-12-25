@@ -2,7 +2,9 @@ import React, { FormEvent, ChangeEvent, ReactElement, useState } from "react";
 import "./login.css";
 import { toast } from "react-toastify";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../lib/firebase";
+import { auth, db, storage } from "../../../lib/firebase";
+import { doc, setDoc } from "firebase/firestore";
+import upload from "../../../lib/upload";
 
 function Login(): ReactElement {
   interface AvatarState {
@@ -20,10 +22,12 @@ function Login(): ReactElement {
       });
     }
   };
+
   const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     toast.success("Login successful");
   };
+
   const handleRegister = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -39,11 +43,20 @@ function Login(): ReactElement {
           email,
           password
         );
+        await setDoc(doc(db, "users", userCredential.user.uid), {
+          username,
+          email,
+          id: userCredential.user.uid,
+          blocked: [],
+        });
 
-        const user = userCredential.user;
-        
+        await setDoc(doc(db, "userchats", userCredential.user.uid), {
+          chats: [],
+        });
+        if (avater.file) upload(avater.file, userCredential.user.uid);
+
         toast.success("User created successfully!");
-       } catch (error) {
+      } catch (error) {
         if (error instanceof Error) {
           console.error("Firebase Auth Error:", error, error.message);
           toast.error(`Error: ${error.message}`);
