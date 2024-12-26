@@ -1,10 +1,10 @@
 import React, { FormEvent, ChangeEvent, ReactElement, useState } from "react";
 import "./login.css";
 import { toast } from "react-toastify";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db, storage } from "../../../lib/firebase";
-import { doc, setDoc } from "firebase/firestore";
-import upload from "../../../lib/upload";
+
+import Registration from "./Registration";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 function Login(): ReactElement {
   interface AvatarState {
@@ -23,9 +23,23 @@ function Login(): ReactElement {
     }
   };
 
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Login successful");
+    const formData = new FormData(e.currentTarget);
+    const { email, password } = Object.fromEntries(formData);
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email as string,
+        password as string
+      );
+      toast.success("Login successful");
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(`Login error ${error.message}`);
+      }
+    }
   };
 
   const handleRegister = (e: FormEvent<HTMLFormElement>) => {
@@ -33,40 +47,11 @@ function Login(): ReactElement {
     const formData = new FormData(e.currentTarget);
     const { username, email, password } = Object.fromEntries(formData);
 
-    const registerUser = async (
-      email: string,
-      password: string
-    ): Promise<void> => {
-      try {
-        const userCredential = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        await setDoc(doc(db, "users", userCredential.user.uid), {
-          username,
-          email,
-          id: userCredential.user.uid,
-          blocked: [],
-        });
+    if (avater.file) {
+      const result = Registration(username, avater.file, email, password);
 
-        await setDoc(doc(db, "userchats", userCredential.user.uid), {
-          chats: [],
-        });
-        if (avater.file) upload(avater.file, userCredential.user.uid);
-
-        toast.success("User created successfully!");
-      } catch (error) {
-        if (error instanceof Error) {
-          console.error("Firebase Auth Error:", error, error.message);
-          toast.error(`Error: ${error.message}`);
-        } else {
-          console.error("Unknown Error:", error);
-          toast.error("An unexpected error occurred.");
-        }
-      }
-    };
-    registerUser(email.toString(), password.toString());
+      console.log(result);
+    }
   };
   return (
     <div className="flex items-center justify-center w-full h-screen gap-10 bg-gradient-to-r from-purple-500 to-blue-500 p-4">
@@ -80,6 +65,7 @@ function Login(): ReactElement {
           onSubmit={handleLogin}
         >
           <input
+            name="email"
             className="w-full p-2 text-xl bg-white/30 text-white rounded-md
                        outline-none border-none focus:ring-2 focus:ring-white placeholder-white/70"
             type="text"
@@ -87,6 +73,7 @@ function Login(): ReactElement {
           />
           {/* Password */}
           <input
+            name="password"
             className="w-full p-2 text-xl bg-white/30 text-white rounded-md
                        outline-none border-none focus:ring-2 focus:ring-white placeholder-white/70"
             type="password"
