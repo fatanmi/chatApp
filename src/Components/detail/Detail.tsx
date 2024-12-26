@@ -1,8 +1,16 @@
-import React from "react";
+import React, { ButtonHTMLAttributes } from "react";
 
 import "./detail.css";
+import useUserStore from "../../lib/userStore";
+import { toast } from "react-toastify";
 
 function Details() {
+  const { isLoading, logout } = useUserStore();
+  const handleLogout = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    e.preventDefault();
+    logout();
+    toast.info("Logged out");
+  };
   return (
     <div className="detail">
       <div className="user">
@@ -73,7 +81,9 @@ function Details() {
         </div>
       </div>
       <button>Block user</button>
-      <button className="logout">Logout</button>
+      <button className="logout" onClick={handleLogout}>
+        Logout
+      </button>
     </div>
   );
 }
