@@ -17,24 +17,11 @@ async function Registration(
       email.toString(),
       password.toString()
     );
-
-    // Set user data in Firestore
-    await setDoc(doc(db, "users", userCredential.user.uid), {
-      username,
-      email,
-      id: userCredential.user.uid,
-      blocked: [],
-    });
-
-    // Set user chat data in Firestore
-    await setDoc(doc(db, "userchats", userCredential.user.uid), {
-      chats: [],
-    });
-
     // Handle file upload
+    let downloadURL: string = "";
     if (file) {
       try {
-        const downloadURL = await upload(file, userCredential.user.uid);
+        downloadURL = await upload(file, userCredential.user.uid);
         console.log("File uploaded successfully:", downloadURL);
       } catch (uploadError) {
         // Roll back user registration if upload fails
@@ -46,6 +33,19 @@ async function Registration(
         throw new Error("File upload failed, user registration rolled back.");
       }
     }
+    // Set user data in Firestore
+    await setDoc(doc(db, "users", userCredential.user.uid), {
+      username,
+      email,
+      id: userCredential.user.uid,
+      blocked: [],
+      avatar: downloadURL,
+    });
+
+    // Set user chat data in Firestore
+    await setDoc(doc(db, "userchats", userCredential.user.uid), {
+      chats: [],
+    });
 
     // If everything succeeds, resolve the promise
     return "User created successfully!";

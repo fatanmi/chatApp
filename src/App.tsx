@@ -12,9 +12,11 @@ function App(): ReactElement {
   const [user, setUser] = useState<User | null>(null);
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();
 
-  if (isLoading) {
-    <div>Loading</div>;
-  }
+  // if (isLoading) {
+  //   <div className="">
+  //     <h2>Loading</h2>
+  //   </div>;
+  // }
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
@@ -25,7 +27,7 @@ function App(): ReactElement {
       }
     });
     return () => {
-      console.log(user);
+      // console.log(user);
       unSub();
     };
   }, [fetchUserInfo]);

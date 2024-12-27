@@ -1,6 +1,7 @@
 import "./chat.css";
 import React, { ReactElement, useEffect, useRef, useState } from "react";
 import EmojiPicker, { EmojiClickData } from "emoji-picker-react";
+import useUserStore from "../../lib/userStore";
 
 function Chat(): ReactElement {
   const [open, setOpen] = useState(false);
@@ -10,6 +11,7 @@ function Chat(): ReactElement {
     setText((prev) => prev + emojiData.emoji);
     setOpen(false);
   };
+  const { currentUser } = useUserStore();
   const endRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -19,9 +21,9 @@ function Chat(): ReactElement {
     <div className="chat">
       <div className="top">
         <div className="user">
-          <img src="./avatar.png" alt="" />
+          <img src={currentUser?.avatar || "./avatar.png"} alt="" />
           <div className="texts">
-            <span>Naomi Fat</span>
+            <span>{currentUser?.username}</span>
             <p className="userDescription">Lorem ipsum dolor sit amet.</p>
           </div>
         </div>

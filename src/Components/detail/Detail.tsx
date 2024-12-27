@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from "react";
+import React from "react";
 
 import "./detail.css";
 import useUserStore from "../../lib/userStore";

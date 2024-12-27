@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import { auth, db } from "./firebase";
 import { signOut } from "firebase/auth";
 
@@ -30,7 +30,7 @@ const useUserStore = create<Store>((set) => ({
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
+        // console.log("Document data:", docSnap.data());
         set({
           currentUser: { id: uid, ...docSnap.data() } as User,
           isLoading: false,
@@ -46,7 +46,6 @@ const useUserStore = create<Store>((set) => ({
   },
   logout: async () => {
     await signOut(auth);
-    set({ currentUser: null, isLoading: false });
   },
 }));
 
