@@ -1,0 +1,38 @@
+:root {
+  --vw: 100vw;
+  --vh: 100vh;
+
+  /* define any fraction you like: */
+  --third: calc(var(--vw) / 3);
+}
+
+/* full-screen flex container */
+.container {
+  display: flex;
+  width: var(--vw);
+  height: var(--vh);
+  margin: 0;
+  padding: 0;
+  background: #212020;
+}
+
+/* each child pulls its size from the --third variable */
+.container > * {
+  width: var(--third);
+  height: var(--vh);
+  box-sizing: border-box;
+}
+
+/* then you can still override backgrounds / borders per section */
+.mainControl {
+  background: #f7f5f3;
+  border-right: 1px solid #ccc;
+}
+.chatList {
+  background: #fff;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+}
+.chatWindow {
+  background: #f5f1eb;
+}

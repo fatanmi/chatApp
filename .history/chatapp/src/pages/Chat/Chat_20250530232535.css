@@ -1,0 +1,40 @@
+:root {
+  --width: 100vw;
+  --height: 100vh;
+}
+.container {
+  display: flex;
+  height: var(--height);
+  width: var(--width);
+  background-color: #212020;
+  min-width: 200px;
+  min-height: 100px;
+}
+.mainControl {
+  width: 35px;
+  /* height: 100%; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f5f3;
+  border-right: 1px solid #ccc;
+}
+.chatList {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #fff;
+  color: #0e0e0e;
+  border-right: 1px solid #ccc;
+}
+.chatWindow {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f1eb;
+  color: #f5f1eb;
+}

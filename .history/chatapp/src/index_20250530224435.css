@@ -1,0 +1,30 @@
+/* index.css */
+body {
+  font-family:
+    "SF Pro Text",
+    "SF Pro Icons",
+    system,
+    -apple-system,
+    system-ui,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Helvetica Neue",
+    "Helvetica",
+    "Arial",
+    "Lucida Grande",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    sans-serif;
+}
+
+/* Reset some default styles */ 
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* …your other global styles… */

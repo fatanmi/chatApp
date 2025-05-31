@@ -1,0 +1,27 @@
+/* index.css */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+font-family: font-family:
+"SF Pro Text",
+"SF Pro Icons",
+system,
+-apple-system,
+system-ui,
+BlinkMacSystemFont,
+"Segoe UI",
+"Helvetica Neue",
+"Helvetica",
+"Arial",
+"Lucida Grande",
+"Ubuntu",
+"Cantarell",
+"Fira Sans",
+sans-serif;
+
+
+/* …your other global styles… */

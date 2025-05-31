@@ -1,0 +1,9 @@
+.chatListHeader {
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: start; */
+  padding-left: 30px;
+  color: #44b97c;
+  font-size: 0.5rem;
+  /* line-height: 2; */
+}

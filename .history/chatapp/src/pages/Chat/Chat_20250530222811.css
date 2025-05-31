@@ -1,0 +1,38 @@
+#root {
+  --width: 100vw;
+  --height: 100vh;
+}
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: #212020;
+  min-width: 200px;
+  min-height: 100px;
+}
+.mainControl {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f5f3;
+}
+.chatList {
+  width: 25%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #2c2c2c;
+  color: #fff;
+}
+.chatWindow {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f1eb;
+  color: #f5f1eb;
+}

@@ -1,0 +1,12 @@
+.chatListHeader {
+  /* display: grid; */
+  flex-direction: row;
+  color: #44b97c;
+  background-color: red;
+  padding-left: 300px;
+}
+.chatListHeader h1 {
+  font-size: 1.5rem;
+  /* color: #44b97c; */
+  margin: 1rem 0;
+}

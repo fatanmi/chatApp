@@ -1,0 +1,15 @@
+.chatListHeader {
+  display: grid;
+  align-items: center;
+  justify-content: start;
+  color: #44b97c;
+  background-color: red;
+  /* font-size: 1rem; */
+  /* line-height: 2; */
+}
+.chatListHeader h1 {
+  padding: 30px;
+  font-size: rem;
+  color: #44b97c;
+  margin: 1rem 0;
+}

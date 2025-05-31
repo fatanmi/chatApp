@@ -1,0 +1,12 @@
+/* index.css */
+font-family: 'Inter', sans-serif;
+/* Reset some default styles */ 
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* …your other global styles… */
