@@ -1,9 +1,20 @@
 .chatListHeader {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 0 0.5rem;
+  padding: 0 0.6rem;
+}
+.searchPlusIcon {
+  position: relative;
+  width: 100%;
+}
+.fa-magnifying-glass {
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  left: 0.6rem;
+  font-size: 0.9rem;
 }
 .chatListHeader h1 {
   color: #44b97c;
@@ -14,12 +25,10 @@
 .searchbar {
   width: 100%;
   height: 2rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1.7rem;
   border-radius: 1rem;
   border: 2px solid #44b97c;
   color: #121111;
-  /* background-color: #f7f5f3; */
-  margin-bottom: 0.5rem;
   cursor: pointer;
   outline: none;
   font: inherit;
@@ -39,11 +48,10 @@ input::placeholder {
 }
 .filter {
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
   align-items: center;
-  width: 80%;
-  padding-bottom: 0.6rem;
-  padding-top: 0;
+  width: 100%;
+  padding: 0.6rem 0;
 }
 .filter-name {
   display: flex;
@@ -57,17 +65,17 @@ input::placeholder {
   border-radius: 1rem;
   border: 1px solid #ccc;
   padding: 2px 0.5rem;
+  margin-right: 0.5rem;
 }
-.all {
-  background-color: #f7f5f3;
-}
+
 .chatListItems {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   height: calc(100% - 3rem); /* Adjust height to account for header */
   width: 100%;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
+  min-width: 200px;
 }
 /* 2) WebKit scrollbar styling */
 .chatListItems::-webkit-scrollbar {

@@ -5,43 +5,44 @@ import ChatListItem from "./ChatListItem/ChatListItem";
 export default function ChatList(): React.ReactElement {
   return (
     <>
-      <div className="chatList">
-        <div className="chatListHeader">
-          <h1>WhatsApp</h1>
+      <div className="chatListHeader">
+        <h1>WhatsApp</h1>
+        <div className="searchPlusIcon">
+          <i className="fa-solid fa-magnifying-glass"></i>
           <input
             className="searchbar"
             type="text"
             placeholder="Search or start a new chat"
           />
-          <div className="filter">
-            <div className="all filter-name">
-              <div>All</div>
-            </div>
-            <div className="unread filter-name">
-              <span>Unread</span>
-            </div>
-            <div className="favorite filter-name">
-              <span>Favorite</span>
-            </div>
-            <div className="groups filter-name">
-              <span>Groups</span>
-            </div>
+        </div>
+        <div className="filter">
+          <div className="all filter-name">
+            <div>All</div>
+          </div>
+          <div className="unread filter-name">
+            <span>Unread</span>
+          </div>
+          <div className="favorite filter-name">
+            <span>Favorite</span>
+          </div>
+          <div className="groups filter-name">
+            <span>Groups</span>
           </div>
         </div>
-        <div className="chatListItems">
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-        </div>
+      </div>
+      <div className="chatListItems">
+        <ChatListItem />
+        <ChatListItem />
+        <ChatListItem />
+        <ChatListItem />
+        <ChatListItem />
+        <ChatListItem />
+        <ChatListItem />
+        <ChatListItem />
+        <ChatListItem />
+        <ChatListItem />
+        <ChatListItem />
+        <ChatListItem />
       </div>
     </>
   );

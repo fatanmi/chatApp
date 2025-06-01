@@ -28,7 +28,7 @@
   color: #121111;
 }
 .chatListItemDetails .username {
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 600;
 }
 .chatListItemDetails .lastMessage {

@@ -1,0 +1,189 @@
+.messages-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: red;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 20px;
+  /* background-color: #ccc; */
+  background: linear-gradient(90deg, #ffff, #979696);
+  /* border-bottom: 1px solid #292a2ac7; */
+  box-shadow: 0 4px 12px 2px rgba(80, 77, 77, 0.18);
+  height: 7%;
+  z-index: 2;
+  position: relative;
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .text {
+    font-size: 1rem;
+    color: #333;
+  }
+}
+
+.user {
+  display: flex;
+  span {
+    font-size: large;
+  }
+  .userDescription {
+    font-size: small;
+  }
+}
+.icon {
+  padding-right: 1rem;
+  display: flex;
+  padding: 1px;
+  gap: 1rem;
+}
+
+.center {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px;
+  margin-top: auto;
+  overflow-y: scroll;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #fff;
+  height: 100%;
+  /* Hide scrollbar in Firefox */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  /* Hide scrollbar in WebKit (Chrome, Safari) */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.message {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem;
+  max-width: 70%;
+
+  p {
+    padding: 1rem;
+    background-color: #0f1612c7;
+    border-radius: 1rem;
+  }
+  &.own {
+    align-self: flex-end;
+    .texts {
+      p {
+        background-color: #02642ec7;
+      }
+    }
+  }
+
+  img {
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .texts {
+    display: flex;
+    flex-direction: column;
+    span {
+      font-size: 0.6rem;
+      font-weight: 200;
+      align-self: flex-end;
+      padding: 0.2rem;
+    }
+    p {
+      font-size: 0.7rem;
+      font-weight: 300;
+      border-radius: 0.5rem;
+      object-fit: cover;
+    }
+    img {
+      width: 100%;
+      height: 15rem;
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+.bottom {
+  position: relative; /* ← make the parent a positioning context */
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ccc;
+
+  /* (A) input: give it equal left/right padding so text doesn't overlap icons */
+  input {
+    flex: 1;
+    padding: 0.5rem 2.5rem; /* top/bottom 0.5rem, right/left 2.5rem */
+    border: none;
+    border-radius: 1rem;
+    background-color: #f7f5f3;
+    color: #020202;
+    font-size: 1rem;
+    outline: none;
+    transition: background-color 0.3s ease;
+  }
+
+  input::placeholder {
+    color: #999;
+  }
+
+  /* (B) Emoji on the left inside the input */
+  .emoji {
+    position: absolute;
+    left: 1.5rem; /* adjust as needed; 1.5rem sits inside the 2.5rem padding */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.2rem; /* size of your emoji icon */
+    color: #666;
+  }
+
+  /* (C) Mic icon on the right inside the input */
+  .mic {
+    position: absolute;
+    right: 1.5rem; /* adjust so it sits in the right padding */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #666;
+    /* .fa-so */
+  }
+
+  /* (D) Any other icons to the far right */
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 1rem; /* separate from the input wrapper */
+  }
+  .mic .fa-circle-chevron-right {
+    display: none;
+  }
+
+  /* 2) By default, show the mic icon */
+  .mic .fa-microphone {
+    display: inline-block;
+  }
+
+  /* 3) When the input is focused, swap them: hide mic, show chevron */
+  .InputMessage:focus-visible ~ .mic .fa-microphone {
+    display: none;
+  }
+
+  .InputMessage:focus-visible ~ .mic .fa-circle-chevron-right {
+    display: inline-block;
+  }
+}

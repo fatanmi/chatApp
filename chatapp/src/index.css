@@ -11,6 +11,7 @@ body {
 *::after {
   margin: 0;
   box-sizing: border-box;
+  
 }
 
 /* …your other global styles… */
